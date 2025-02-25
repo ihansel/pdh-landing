@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peregian Digital Hub - Where Innovation Meets the Ocean</title>
+    <meta name="description" content="The headquarters for technology innovation and digital creativity on the Sunshine Coast with brand new AI Lab facilities.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #00b8d9;
+            --accent: #ff6b6b;
+            --light: #f7fafc;
+            --dark: #1a202c;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .about-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .ai-lab-gradient {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .membership-card {
+            transition: all 0.3s ease;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        
+        .membership-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: translateY(-5px);
+            color: var(--secondary);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 184, 217, 0.1);
+            border-radius: 43% 57% 70% 30% / 30% 42% 58% 70%;
+            transform: rotate(-20deg);
+            animation: blobAnimation 15s infinite alternate;
+            z-index: -1;
+        }
+        
+        @keyframes blobAnimation {
+            0% { border-radius: 43% 57% 70% 30% / 30% 42% 58% 70%; transform: rotate(-20deg); }
+            50% { border-radius: 70% 30% 43% 57% / 58% 70% 30% 42%; transform: rotate(0deg); }
+            100% { border-radius: 30% 70% 57% 43% / 42% 30% 70% 58%; transform: rotate(20deg); }
+        }
+        
+        .text-shadow {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-white bg-opacity-95 shadow-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-3 md:flex md:justify-between md:items-center">
+            <div class="flex justify-between items-center">
+                <div>
+                    <a href="#" class="text-2xl font-bold text-blue-900 flex items-center">
+                        <span class="text-blue-500 mr-1"><i class="fas fa-code"></i></span>
+                        <span class="font-display">Peregian</span><span class="text-blue-500 font-display">Digital</span>
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-500 hover:text-gray-600 focus:outline-none" aria-label="Toggle menu">
+                        <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                            <path d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <nav class="md:flex items-center hidden">
+                <a href="#about" class="px-2 py-1 mx-2 text-sm font-medium text-gray-700 transition duration-300 hover:text-blue-500 nav-link">About</a>
+                <a href="#features" class="px-2 py-1 mx-2 text-sm font-medium text-gray-700 transition duration-300 hover:text-blue-500 nav-link">Features</a>
+                <a href="#ailab" class="px-2 py-1 mx-2 text-sm font-medium text-gray-700 transition duration-300 hover:text-blue-500 nav-link">AI Lab</a>
+                <a href="#membership" class="px-2 py-1 mx-2 text-sm font-medium text-gray-700 transition duration-300 hover:text-blue-500 nav-link">Membership</a>
+                <a href="#contact" class="ml-4 px-5 py-2 text-sm font-medium tracking-wider text-white transition duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                    Join Us
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center justify-center px-6 text-white">
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 font-display leading-tight text-shadow animate-fade-in">
+                Where <span class="text-blue-400">Technology</span> Meets<br>the <span class="text-blue-400">Ocean</span>
+            </h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 text-gray-200 animate-fade-in delay-100">
+                The headquarters for technology innovation and digital creativity on the Sunshine Coast
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in delay-200">
+                <a href="#about" class="px-8 py-4 text-base font-medium tracking-wider text-white transition duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                    Explore the Hub
+                </a>
+                <a href="#contact" class="px-8 py-4 text-base font-medium tracking-wider text-white transition duration-300 transform bg-transparent border border-white rounded-lg hover:bg-white hover:text-blue-900 focus:outline-none">
+                    Join Our Community
+                </a>
+            </div>
+            <div class="mt-16 flex justify-center animate-fade-in delay-300">
+                <a href="#about" class="text-white hover:text-blue-400 transition duration-300">
+                    <i class="fas fa-chevron-down text-3xl animate-bounce"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 relative overflow-hidden">
+        <div class="blob top-20 right-0 opacity-50"></div>
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-display text-blue-900">Welcome to Peregian Digital Hub</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">The ideal environment for building ambitious tech companies, home to the region's leading digital industry networks, and a talent factory skilling up technologists & digital creatives.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="feature-card bg-white p-8">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900">Build Your Tech Company</h3>
+                    <p class="text-gray-600">Join over 100 of the Coast's most talented technologists who've made the Hub their home. Get energised by A-grade founders building exciting startups. Contribute to a culture of ambition, learning & sharing.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900">Connect with Your Tribe</h3>
+                    <p class="text-gray-600">The Noosa region has seen a huge influx of digital talent in recent years. Whether you're a founder, marketer, creative, investor, technologist, or storyteller, there's a network that's perfect for you.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-blue-900">Learn Valuable Skills</h3>
+                    <p class="text-gray-600">The Hub is a digital talent factory. From AI hackathons to holiday programs, we host vibrant courses, workshops and cadetships for curious people who want to learn how to create with the latest technologies.</p>
+                </div>
+            </div>
+            
+            <div class="mt-20 text-center">
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto mb-8">The Hub represents Noosa Council's effort to cultivate a thriving tech ecosystem in a predominantly tourism-focused region, aiming to integrate technological innovation with Noosa's unique coastal lifestyle.</p>
+                <a href="#features" class="inline-block px-8 py-4 text-base font-medium tracking-wider text-white transition duration-300 transform bg-blue-900 rounded-lg hover:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                    Discover Our Features
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6 bg-gray-100">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-display text-blue-900">World-Class Facilities</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our purpose-built environment is designed to foster creativity, collaboration, and innovation for technology companies and digital professionals.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 text-blue-900">Main Hub Facility</h3>
+                    <p class="text-gray-600 mb-6">Purpose-built to house technology companies and individual tech workers in an open, modern environment suited to collaboration and collegial support.</p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                            <span>Accommodates 120 people across 4 office spaces, desk pods and hotdesking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                            <span>Gigabit internet with 24/7 secure access</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                            <span>5 bookable meeting rooms, video call booths, outdoor deck</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                            <span>Car parking, bike racks and end of trip facilities</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                            <span>Amazing food/drink options within 400m of the Hub</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="rounded-2xl overflow-hidden shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Modern workspace at Peregian Digital Hub" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- AI Lab Section -->
+    <section id="ailab" class="py-20 px-6 ai-lab-gradient text-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-display">The AI Lab</h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">Our brand new AI Lab has the region's most advanced facilities for content production, event hosting and collaboration.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-2xl transition duration-300 membership-card">
+                    <div class="text-blue-400 text-3xl mb-4">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">The Sound Pod</h3>
+                    <p class="text-gray-300 mb-4">A walk-in and use podcasting studio with 4-person booth and post-production suite.</p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>Sound-proof environment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>Top-of-line Rode equipment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>Edit suite with workstation</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-2xl transition duration-300 membership-card">
+                    <div class="text-blue-400 text-3xl mb-4">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">The Wonder Pod</h3>
+                    <p class="text-gray-300 mb-4">A next-generation auditorium that seats up to 100 people, with an AI-enabled audiovisual system.</p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>7m LED wall</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>Multi-camera video capture</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>Hybrid event capabilities</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-8 shadow-lg hover:shadow-2xl transition duration-300 membership-card">
+                    <div class="text-blue-400 text-3xl mb-4">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">The Data Pod</h3>
+                    <p class="text-gray-300 mb-4">A space designed for data collaboration and visualization with command center capabilities.</p>
+                    <ul class="text-gray-300 space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>Advanced visualization tools</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>Integrated video conferencing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-400 mr-2 mt-0.5"><i class="fas fa-circle-check"></i></span>
+                            <span>Team collaboration space</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#membership" class="inline-block px-8 py-4 text-base font-medium tracking-wider text-gray-900 transition duration-300 transform bg-blue-400 rounded-lg hover:bg-blue-300 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                    Explore Membership Options
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Membership Section -->
+    <section id="membership" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-display text-blue-900">Membership Options</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Join our curated community of tech entrepreneurs, digital specialists, and innovators building the future.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 membership-card">
+                    <div class="bg-blue-900 text-white p-6">
+                        <h3 class="text-2xl font-bold">Bootstrapper</h3>
+                        <p class="text-blue-200">For Tech Founders and Teams</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-4xl font-bold text-blue-900">$450</span>
+                            <span class="text-gray-500 ml-2">/ month</span>
+                        </div>
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>Full-time membership</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>Dedicated sit-stand desk pod</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>For teams of up to 4 people</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>Discounts for multiple memberships</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>24/7 hub access</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full py-3 px-6 text-center font-medium text-white bg-blue-900 rounded-lg hover:bg-blue-800 transition duration-300">Apply Now</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 membership-card">
+                    <div class="bg-blue-500 text-white p-6">
+                        <h3 class="text-2xl font-bold">Flex</h3>
+                        <p class="text-blue-100">For Remote Tech Professionals</p>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-4xl font-bold text-blue-500">$275</span>
+                            <span class="text-gray-500 ml-2">/ month</span>
+                        </div>
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>Part-time membership</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>Use hotdesks in flex area</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>Equivalent of 7 days per month</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>Perfect for home/travel balance</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1"><i class="fas fa-check-circle"></i></span>
+                                <span>Access during business hours</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="block w-full py-3 px-6 text-center font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition duration-300">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">As a curated space, the Hub reserves the right to select applicants that it considers would best benefit from, and contribute to, the tech entrepreneurial environment and fellow members.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Culture Section -->
+    <section class="py-20 px-6 bg-blue-900 text-white relative overflow-hidden">
+        <div class="blob opacity-20 top-0 left-0"></div>
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-display">Hub Culture</h2>
+                <p class="text-lg text-blue-200 max-w-3xl mx-auto">Be part of a supportive 'give first' culture that prizes professional growth, entrepreneurial ambition, contribution to others' success, and fun.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">A Day at the Hub</h3>
+                    <p class="text-blue-100 mb-6">
+                        On any given day, you can take a 5-minute stroll to grab a coffee in beautiful Peregian Beach Village with new friends, one of whom has a hot new AI startup while the other recently exited a 10-year overnight success and is building again.
+                    </p>
+                    <p class="text-blue-100 mb-6">
+                        You might grab lunch with a new Hub mate at one of over 10 awesome restaurants and eateries in the Village: Award-winning sushi, health food bar, Mexican, Moroccan, French, Thai, and more.
+                    </p>
+                    <p class="text-blue-100">
+                        The Hub's unique location lets you slap on the sunscreen and take a run with colleagues along 10km of pristine beaches, just 50m away, then cool off with a swim and shower.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Community Activities</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-star"></i></span>
+                            <span>Weekly hub lunch at the pub</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-star"></i></span>
+                            <span>Regular BBQs on the deck</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-star"></i></span>
+                            <span>Annual Christmas party on the MV Catalina</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-star"></i></span>
+                            <span>Beach drinks with families</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-star"></i></span>
+                            <span>Regular tech founders' dinners</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-star"></i></span>
+                            <span>Weekly Edge Exchange program</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-star"></i></span>
+                            <span>Regular AI workshops</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Digital Networks -->
+    <section class="py-20 px-6 bg-gray-100">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 font-display text-blue-900">Digital Industry Networks</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">The Hub is home to the region's leading digital industry networks, connecting thousands of professionals across the Sunshine Coast.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Coding from Beach</h3>
+                    <p class="text-gray-600">The network for technologists and developers building innovative solutions.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reboot</h3>
+                    <p class="text-gray-600">The network for digital marketers and creatives driving brand growth.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Screen Collective</h3>
+                    <p class="text-gray-600">The network for screen professionals creating compelling visual stories.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Manufacturing Excellence</h3>
+                    <p class="text-gray-600">The network for advanced manufacturers pushing technological boundaries.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SunCoast Angels</h3>
+                    <p class="text-gray-600">The network for early-stage startup investors funding innovation.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <div class="text-blue-500 text-3xl mb-4">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Tech Founder Network</h3>
+                    <p class="text-gray-600">The network for founders of tech startups building the next big thing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact/CTA Section -->
+    <section id="contact" class="py-20 px-6 about-gradient text-white">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6 font-display">Join Our Tech Community</h2>
+                    <p class="text-lg mb-8">
+                        Ready to become part of the Sunshine Coast's most vibrant tech ecosystem? Apply for membership today and take the first step towards building your tech future in paradise.
+                    </p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-map-marker-alt"></i></span>
+                            <span>253-255 David Low Way, Peregian Beach, QLD</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-envelope"></i></span>
+                            <span>info@peregianhub.com.au</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-300 mr-3 mt-1"><i class="fas fa-globe"></i></span>
+                            <span>www.peregianhub.com.au</span>
+                        </li>
+                    </ul>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white text-blue-900 flex items-center justify-center hover:bg-blue-200 transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white text-blue-900 flex items-center justify-center hover:bg-blue-200 transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white text-blue-900 flex items-center justify-center hover:bg-blue-200 transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white text-blue-900 flex items-center justify-center hover:bg-blue-200 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-2xl text-gray-800">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-900">Get in Touch</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your name">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your email">
+                        </div>
+                        <div class="mb-4">
+                            <label for="interest" class="block text-gray-700 mb-2">I'm interested in:</label>
+                            <select id="interest" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select an option</option>
+                                <option value="membership">Membership</option>
+                                <option value="ai-lab">AI Lab</option>
+                                <option value="events">Events</option>
+                                <option value="networks">Industry Networks</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tell us about yourself and your tech interests"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 px-6 text-center font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-10 px-6 bg-gray-900 text-white">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-10">
+                <div>
+                    <a href="#" class="text-2xl font-bold flex items-center mb-4">
+                        <span class="text-blue-400 mr-1"><i class="fas fa-code"></i></span>
+                        <span class="font-display">Peregian</span><span class="text-blue-400 font-display">Digital</span>
+                    </a>
+                    <p class="text-gray-400">The headquarters for technology innovation and digital creativity on the Sunshine Coast.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-blue-400 transition duration-300">About</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-blue-400 transition duration-300">Features</a></li>
+                        <li><a href="#ailab" class="text-gray-400 hover:text-blue-400 transition duration-300">AI Lab</a></li>
+                        <li><a href="#membership" class="text-gray-400 hover:text-blue-400 transition duration-300">Membership</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">Networks</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>253-255 David Low Way</li>
+                        <li>Peregian Beach, QLD</li>
+                        <li>info@peregianhub.com.au</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500">© 2024 Peregian Digital Hub. All rights reserved.</p>
+                <p class="text-gray-500">An initiative of <a href="#" class="text-blue-400 hover:text-blue-300">Noosa Council</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Header scroll behavior
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'shadow-lg');
+                header.classList.remove('py-3', 'shadow-md');
+            } else {
+                header.classList.add('py-3', 'shadow-md');
+                header.classList.remove('py-2', 'shadow-lg');
+            }
+        });
+        
+        // Mobile menu toggle (basic implementation)
+        const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
+        const mobileMenu = document.querySelector('nav');
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
